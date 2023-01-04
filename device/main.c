@@ -99,6 +99,13 @@ void tx_task() {
         // nothind to send
         return;
     }
+    
+    // poll throttle
+    const uint32_t interval_ms = 8;
+    static uint32_t start_ms = 0;
+
+    if ( board_millis() - start_ms < interval_ms) return; // too soon
+    start_ms += interval_ms;
 
     if (tud_suspended()) {
         tud_remote_wakeup();
