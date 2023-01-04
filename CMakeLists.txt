@@ -36,4 +36,4 @@ pico_add_extra_outputs(device)
 target_include_directories(device PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/device)
 
-target_link_libraries(device pico_stdlib tinyusb_device tinyusb_board) # tinyusb_device tinyusb_board)
+target_link_libraries(device pico_stdlib tinyusb_device tinyusb_board)
