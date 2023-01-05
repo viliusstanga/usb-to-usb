@@ -101,11 +101,11 @@ void tx_task() {
     }
     
     // poll throttle
-    const uint32_t interval_ms = 8;
-    static uint32_t start_ms = 0;
+    // const uint32_t interval_ms = 8;
+    // static uint32_t start_ms = 0;
 
-    if ( board_millis() - start_ms < interval_ms) return; // too soon
-    start_ms += interval_ms;
+    // if ( board_millis() - start_ms < interval_ms) return; // too soon
+    // start_ms += interval_ms;
 
     if (tud_suspended()) {
         tud_remote_wakeup();
@@ -116,7 +116,7 @@ void tx_task() {
         return;
     }
 
-    if (!tud_hid_keyboard_report(REPORT_ID_KEYBOARD, tx_buffer[tx_tail][0], &tx_buffer[tx_tail][2])) {
+    if (!tud_hid_keyboard_report(ITF_NUM_KEYBOARD, tx_buffer[tx_tail][0], &tx_buffer[tx_tail][2])) {
         printf("Failed to send kbd report\n");
         return;
     }
